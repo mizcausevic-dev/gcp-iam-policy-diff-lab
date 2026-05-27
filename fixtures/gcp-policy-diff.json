@@ -1,0 +1,78 @@
+{
+  "snapshots": [
+    {
+      "id": "snapshot-prod-core",
+      "name": "prod-core-project",
+      "scope": "PROJECT",
+      "resourceType": "Project",
+      "resourcePath": "projects/prod-core-platform",
+      "status": "CURRENT",
+      "bindingCount": 24,
+      "collectedAt": "2026-05-30T00:00:00Z"
+    },
+    {
+      "id": "snapshot-folder-finance",
+      "name": "finance-folder",
+      "scope": "FOLDER",
+      "resourceType": "Bucket",
+      "resourcePath": "folders/7091448821/buckets/finance-drop-zone",
+      "status": "STALE",
+      "bindingCount": 11,
+      "collectedAt": "2026-05-27T06:00:00Z"
+    }
+  ],
+  "diffs": [
+    {
+      "id": "diff-public-viewer",
+      "snapshotId": "snapshot-prod-core",
+      "resourcePath": "projects/prod-core-platform/buckets/marketing-atlas-exports",
+      "resourceType": "Bucket",
+      "scope": "PROJECT",
+      "status": "ADDED",
+      "role": "roles/storage.objectViewer",
+      "member": "allUsers",
+      "changeWindowHours": 42,
+      "isPublic": true,
+      "note": "Campaign export bucket was opened during an emergency partner handoff."
+    },
+    {
+      "id": "diff-editor-basic-role",
+      "snapshotId": "snapshot-prod-core",
+      "resourcePath": "projects/prod-core-platform",
+      "resourceType": "Project",
+      "scope": "PROJECT",
+      "status": "CHANGED",
+      "role": "roles/editor",
+      "member": "group:ops-contractors@kineticgain.com",
+      "changeWindowHours": 18,
+      "isPrivileged": true,
+      "violatesOrgPolicy": true,
+      "note": "Basic role reintroduced after a migration rollback."
+    },
+    {
+      "id": "diff-token-creator",
+      "snapshotId": "snapshot-folder-finance",
+      "resourcePath": "folders/7091448821/serviceAccounts/finance-ingestor@prod-core-platform.iam.gserviceaccount.com",
+      "resourceType": "ServiceAccount",
+      "scope": "FOLDER",
+      "status": "CHANGED",
+      "role": "roles/iam.serviceAccountTokenCreator",
+      "member": "serviceAccount:legacy-sync@partner-edge.iam.gserviceaccount.com",
+      "changeWindowHours": 31,
+      "isPrivileged": true,
+      "note": "Legacy partner integration still has token minting rights."
+    },
+    {
+      "id": "diff-cleanup-topic",
+      "snapshotId": "snapshot-prod-core",
+      "resourcePath": "projects/prod-core-platform/topics/release-audit-events",
+      "resourceType": "Topic",
+      "scope": "ORGANIZATION",
+      "status": "REMOVED",
+      "role": "roles/pubsub.publisher",
+      "member": "group:release-audit@kineticgain.com",
+      "changeWindowHours": 9,
+      "note": "Removal is expected but still waiting on policy snapshot refresh."
+    }
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "snapshots": [
+    {
+      "id": "snapshot-prod-core",
+      "name": "prod-core-project",
+      "scope": "PROJECT",
+      "resourceType": "Project",
+      "resourcePath": "projects/prod-core-platform",
+      "status": "CURRENT",
+      "bindingCount": 19,
+      "collectedAt": "2026-05-30T00:00:00Z"
+    }
+  ],
+  "diffs": [
+    {
+      "id": "diff-clean-topic",
+      "snapshotId": "snapshot-prod-core",
+      "resourcePath": "projects/prod-core-platform/topics/release-audit-events",
+      "resourceType": "Topic",
+      "scope": "PROJECT",
+      "status": "REMOVED",
+      "role": "roles/pubsub.publisher",
+      "member": "group:release-audit@kineticgain.com",
+      "changeWindowHours": 6,
+      "note": "Expected cleanup already approved."
+    }
+  ]
+}
